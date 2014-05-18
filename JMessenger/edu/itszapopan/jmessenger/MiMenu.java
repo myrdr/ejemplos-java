@@ -2,22 +2,21 @@ package edu.itszapopan.jmessenger;
 
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
-import javax.swing.JMenuBar;
 import javax.swing.KeyStroke;
 import javax.swing.ImageIcon;
 
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JFrame;
 
 public class MiMenu {
 		//implements ActionListener, ItemListener {
+		
+    private JMenuBar menuBar;
 
     /** Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createImageIcon(String path) {
@@ -31,7 +30,6 @@ public class MiMenu {
     }
 
     public JMenuBar createMenuBar() {
-        JMenuBar menuBar;
         JMenu menu, submenu;
         JMenuItem menuItem;
         JRadioButtonMenuItem rbMenuItem;
