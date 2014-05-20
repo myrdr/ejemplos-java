@@ -3,17 +3,18 @@ package edu.itszapopan.jmessenger;
 import javax.swing.*;
 import java.awt.*;
 
-
 public class VentanaPrincipal extends JFrame {
 
   //private JTextField txtIP;
   
-  /* Panel izquierdo donde se pondrán los contactos */
+  /** Panel izquierdo donde se pondrán los contactos */
   private PanelContactos pnlCont;
-  /* Para poder poner barras de desplazamiento al panel de contactos */ 
+  /** Para poder poner barras de desplazamiento al panel de contactos */ 
   private JScrollPane    slpCont;
-  /* Para poner un menu en la ventana */
+  /** Para poner un menu en la ventana */
   private MiMenu         miMenu;
+  /** Acciones del programa **/
+  private MisAcciones ma;
 
   public VentanaPrincipal(String titulo) {
     super(titulo);
@@ -21,7 +22,11 @@ public class VentanaPrincipal extends JFrame {
 
     pnlCont = new PanelContactos();
     slpCont = new JScrollPane(pnlCont);
-    miMenu  = new MiMenu();
+
+    ma = new MisAcciones();
+    miMenu  = new MiMenu(ma);
+
+    ma.setPanelContactos(pnlCont);
 
     this.setJMenuBar(miMenu.createMenuBar());
 
@@ -31,6 +36,9 @@ public class VentanaPrincipal extends JFrame {
 
 
     setSize(500,500);
+  }
+
+  public void showAddUser() {
   }
 
 }

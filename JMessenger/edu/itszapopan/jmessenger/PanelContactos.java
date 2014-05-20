@@ -12,7 +12,7 @@ public class PanelContactos extends JPanel {
 
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-    for(int i=0; i<5; i++) {
+    for(int i=0; i<2; i++) {
       addContact("Label "+i, "img/brown_woman.png");
     }
 
@@ -28,16 +28,28 @@ public class PanelContactos extends JPanel {
   }
 
   /** Agrega nuevo Contacto. */
-  public void addContact(String nombre, String img) {
+  public void addContact(String nombre, String strImg) {
     ImageIcon icon;
     JLabel lblNombre; 
+    
+    // Para redimencionar una imagen hacemos lo siguiente
+    ImageIcon originalImage;
+    Image resizeImage;
 
-    icon = new ImageIcon(img);
+    originalImage = new ImageIcon(strImg);
+    // Aquí se redimenciona la imagen
+    resizeImage = originalImage.getImage().getScaledInstance(50,50, Image.SCALE_DEFAULT);
+    icon = new ImageIcon(resizeImage);
+
+    // Se genera la etiqueta con la imagen
     lblNombre = new JLabel(nombre, icon, JLabel.LEFT);
 
     listOfLabels.add( lblNombre );
 
     this.add( lblNombre );
+    // Esto actualiza la vista en el JPanel
+    // con las nueva etiqueta
+    this.revalidate();
   }
 
 }

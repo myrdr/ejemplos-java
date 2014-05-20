@@ -16,27 +16,54 @@ import javax.swing.ImageIcon;
 public class MiMenu {
 		//implements ActionListener, ItemListener {
 		
-    private JMenuBar menuBar;
+    private JMenuBar  menuBar;
+    private JMenu     menu;
+    private JMenuItem menuItem;
 
-    /** Returns an ImageIcon, or null if the path was invalid. */
-    protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = MiMenu.class.getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
+    private MisAcciones al;
+
+    public MiMenu(MisAcciones acciones) {
+      al = acciones;
     }
 
     public JMenuBar createMenuBar() {
+      //Create the menu bar.
+      menuBar = new JMenuBar();
+
+      //Build the first menu.
+      menu = new JMenu("Archivo");
+      menu.setMnemonic(KeyEvent.VK_A);
+
+      menuBar.add(menu);
+
+      /** Opción Salir **/
+      menuItem = new JMenuItem("Nuevo Contacto", KeyEvent.VK_N);
+      menuItem.setAccelerator( 
+		      KeyStroke.getKeyStroke( 
+			      KeyEvent.VK_N, ActionEvent.CTRL_MASK ) );
+      menuItem.addActionListener(al);
+      menu.add(menuItem);
+
+      menu.addSeparator();
+
+      /** Opción Salir **/
+      menuItem = new JMenuItem("Sarlir", KeyEvent.VK_S);
+      menuItem.setAccelerator( 
+		      KeyStroke.getKeyStroke( 
+			      KeyEvent.VK_X, ActionEvent.CTRL_MASK ) );
+      menuItem.addActionListener(al);
+      menu.add(menuItem);
+
+      return menuBar;
+    }
+
+    /****
+    public JMenuBar createMenuBarOld() {
         JMenu menu, submenu;
         JMenuItem menuItem;
         JRadioButtonMenuItem rbMenuItem;
         JCheckBoxMenuItem cbMenuItem;
 
-        //Create the menu bar.
-        menuBar = new JMenuBar();
 
         //Build the first menu.
         menu = new JMenu("A Menu");
@@ -56,7 +83,7 @@ public class MiMenu {
         //menuItem.addActionListener(this);
         menu.add(menuItem);
 
-        ImageIcon icon = createImageIcon("/img/middle.gif");
+        //ImageIcon icon = createImageIcon("/img/middle.gif");
         menuItem = new JMenuItem("Both text and icon", icon);
         menuItem.setMnemonic(KeyEvent.VK_B);
         //menuItem.addActionListener(this);
@@ -121,6 +148,7 @@ public class MiMenu {
 
         return menuBar;
     }
+***/
 
 
 }
