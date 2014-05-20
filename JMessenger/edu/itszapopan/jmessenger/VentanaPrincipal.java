@@ -26,6 +26,7 @@ public class VentanaPrincipal extends JFrame {
     ma = new MisAcciones();
     miMenu  = new MiMenu(ma);
 
+    ma.setVentanaPrincipal(this);
     ma.setPanelContactos(pnlCont);
 
     this.setJMenuBar(miMenu.createMenuBar());
@@ -39,6 +40,9 @@ public class VentanaPrincipal extends JFrame {
   }
 
   public void showAddUser() {
+    /** Ventana para agregar un nuevo usuario **/
+    AddUserWindow auw;
+    auw = new AddUserWindow(this);
   }
 
 }
