@@ -14,20 +14,24 @@ public class VentanaPrincipal extends JFrame {
   /** Para poner un menu en la ventana */
   private MiMenu         miMenu;
   /** Acciones del programa **/
-  private MisAcciones ma;
+  private MisAcciones acciones;
+  /** Contactos **/
+  private MisContactos contactos;
 
   public VentanaPrincipal(String titulo) {
     super(titulo);
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-    pnlCont = new PanelContactos();
+    contactos = new MisContactos();
+    acciones  = new MisAcciones();
+    miMenu    = new MiMenu(acciones);
+
+    pnlCont = new PanelContactos(contactos);
     slpCont = new JScrollPane(pnlCont);
 
-    ma = new MisAcciones();
-    miMenu  = new MiMenu(ma);
 
-    ma.setVentanaPrincipal(this);
-    ma.setPanelContactos(pnlCont);
+    acciones.setVentanaPrincipal(this);
+    acciones.setPanelContactos(pnlCont);
 
     this.setJMenuBar(miMenu.createMenuBar());
 

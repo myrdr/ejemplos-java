@@ -6,15 +6,20 @@ import java.util.*;    // List, ArrayList
 
 public class PanelContactos extends JPanel {
 
-  java.util.List<JLabel> listOfLabels = new ArrayList<JLabel>();
+  //java.util.List<JLabel> listOfLabels = new ArrayList<JLabel>();
+  MisContactos contactos;
 
-  public PanelContactos() {
+  public PanelContactos(MisContactos c) {
 
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+    contactos = c;
+
+    /*
     for(int i=0; i<2; i++) {
       addContact("Label "+i, "img/brown_woman.png");
     }
+    */
 
     /*
     for(int i=0; i<5; i++) {
@@ -44,7 +49,7 @@ public class PanelContactos extends JPanel {
     // Se genera la etiqueta con la imagen
     lblNombre = new JLabel(nombre, icon, JLabel.LEFT);
 
-    listOfLabels.add( lblNombre );
+    //listOfLabels.add( lblNombre );
 
     this.add( lblNombre );
     // Esto actualiza la vista en el JPanel

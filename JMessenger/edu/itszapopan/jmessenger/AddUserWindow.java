@@ -3,7 +3,7 @@ package edu.itszapopan.jmessenger;
 import javax.swing.*;
 import java.awt.*;
 
-public class AddUserWindow extends JDialog {
+public class AddUserWindow extends JDialog implements ActionListener {
 
   private JTextField txtNombre;
   private JTextField txtImagen;
@@ -13,8 +13,8 @@ public class AddUserWindow extends JDialog {
   public AddUserWindow (Frame owner) {
     super(owner,"Agregar Usuarios", true);
 
-    this.setLayout( new GridLayout(7,2,10,10) );
-    JLabel space = new JLabel();
+    this.setLayout( new GridLayout(4,2,10,10) );
+    JLabel space = new JLabel(" ** ");
 
     txtNombre = new JTextField();
     txtImagen = new JTextField();
@@ -22,8 +22,6 @@ public class AddUserWindow extends JDialog {
 
     btnOK = new JButton("Aceptar");
     btnCancel = new JButton("Cancelar");
-
-    add(space); add(space);
 
     add(new JLabel("Nombre: "));
     add(txtNombre);
@@ -34,14 +32,26 @@ public class AddUserWindow extends JDialog {
     add(new JLabel("Dirección IP: "));
     add(txtIP);
 
-    add(space); add(space);
-
     add(btnOK);
     add(btnCancel);
+
+    //Handle window closing correctly.
+    /*
+    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+    addWindowListener(new WindowAdapter() {
+        public void windowClosing(WindowEvent we) {
+            }
+        });
+    */
 
     pack();
     setVisible(true);
 
   }
+
+  public void actionPerformed(ActionEvent e) {
+  }
+
+
 }
 
