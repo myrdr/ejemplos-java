@@ -8,7 +8,7 @@ public class SimpleListSearch {
    public static void main(String []args) {
       LinkedList ll;
       Scanner teclado;
-      float numero;
+      int numero;
 
       teclado = new Scanner(System.in);
       ll = new LinkedList();
@@ -18,7 +18,7 @@ public class SimpleListSearch {
 
       do  {
         System.out.print("Number: ");
-	numero = teclado.nextFloat();
+	numero = teclado.nextInt();
 
 	if (numero != 0) {
 	  ll.insertIni(numero);
@@ -36,12 +36,12 @@ public class SimpleListSearch {
       System.out.println();
 
       System.out.print("Please type a number: ");
-      numero = teclado.nextFloat();
+      numero = teclado.nextInt();
 
       if ( ll.find(numero) ) {
         System.out.println("The number was found.");
       } else {
-        System.out.println("The "+ numero +" was NOT found.");
+        System.out.println("The "+ number +" was NOT found.");
       }
 
    }

@@ -2,6 +2,7 @@ package edu.itszapopan.jmessenger;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 public class AddUserWindow extends JDialog implements ActionListener {
 
