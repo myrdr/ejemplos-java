@@ -3,12 +3,12 @@ package edu.itszapopan.edd.programas;
 import edu.itszapopan.edd.listas.*;
 import java.util.Scanner;
 
-public class SimpleList {
+public class SimpleListSearch {
 
    public static void main(String []args) {
       LinkedList ll;
       Scanner teclado;
-      int numero, numAfter;
+      int numero;
 
       teclado = new Scanner(System.in);
       ll = new LinkedList();
@@ -37,16 +37,12 @@ public class SimpleList {
 
       System.out.print("Please type a number: ");
       numero = teclado.nextInt();
-      System.out.print("Please tell me after which number\nyou want to insert the given number: ");
-      numAfter = teclado.nextInt();
 
-      ll.insertAfter(numAfter, numero);
-
-      ll.rewind();
-      while( ll.next() ) {
-	 System.out.print( ll.get() + ", ");
+      if ( ll.find(numero) ) {
+        System.out.println("The number was found.");
+      } else {
+        System.out.println("The "+ number +" was NOT found.");
       }
-      System.out.println();
 
    }
 

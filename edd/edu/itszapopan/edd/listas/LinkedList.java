@@ -98,6 +98,23 @@ public class LinkedList {
     return tmp.getData();
   }
 
+  /**
+   * Return true if a number is found in the list.
+   */
+  public boolean find(float number)  {
+
+    tmp = header;
+
+    while (tmp.getNext() != null) {
+       tmp = tmp.getNext();
+       if (tmp.getData() == number) {
+         return true;
+       }
+    }
+    return false;
+
+  }
+
 }
 
 
