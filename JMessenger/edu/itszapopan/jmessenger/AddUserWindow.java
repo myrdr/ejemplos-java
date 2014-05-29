@@ -9,7 +9,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class AddUserWindow extends JDialog implements ActionListener {
 
   private JTextField txtNombre;
-  //private JTextField txtImagen;
   private JTextField txtIP;
   private JButton    btnOK, btnCancel, btnImagen;
   private JLabel     lblImagen, lblImagenPath;
@@ -19,14 +18,10 @@ public class AddUserWindow extends JDialog implements ActionListener {
   public AddUserWindow (Frame owner) {
     super(owner,"Agregar Usuarios", true);
 
-    JPanel pnlImagen;
     FileNameExtensionFilter filter;
-
-    //this.setLayout( new GridLayout(4,2,10,10) );
-    JLabel space = new JLabel(" ** ");
+    GroupLayout layout;
 
     txtNombre = new JTextField();
-    //txtImagen = new JTextField();
     txtIP     = new JTextField();
 
     lblNombre = new JLabel("Nombre: ");
@@ -36,7 +31,6 @@ public class AddUserWindow extends JDialog implements ActionListener {
     btnOK = new JButton("Aceptar");
     btnCancel = new JButton("Cancelar");
 
-    pnlImagen = new JPanel();
     btnImagen = new JButton("Añadir imagen",
 		    		createImageIcon("img/Open16.gif") );
     lblImagenPath = new JLabel();
@@ -47,7 +41,7 @@ public class AddUserWindow extends JDialog implements ActionListener {
     fileChooser.setFileFilter(filter);
 
     //http://docs.oracle.com/javase/tutorial/uiswing/layout/group.html
-    GroupLayout layout = new GroupLayout(this.getContentPane());
+    layout = new GroupLayout(this.getContentPane());
     this.getContentPane().setLayout(layout);
  
     // Turn on automatically adding gaps between components
@@ -58,7 +52,6 @@ public class AddUserWindow extends JDialog implements ActionListener {
     layout.setAutoCreateContainerGaps(true);
 
     // Create a sequential group for the horizontal axis.
- 
     GroupLayout.SequentialGroup hGroup = layout.createSequentialGroup();
  
     // The sequential group in turn contains two parallel groups.
@@ -66,11 +59,14 @@ public class AddUserWindow extends JDialog implements ActionListener {
             .addComponent(lblNombre)
             .addComponent(lblImagen)
 	    .addComponent(lblIP)
+	    .addComponent(btnOK,GroupLayout.Alignment.TRAILING)
 	    );
     hGroup.addGroup(layout.createParallelGroup()
             .addComponent(txtNombre)
             .addComponent(btnImagen)
+            .addComponent(lblImagenPath)
 	    .addComponent(txtIP)
+	    .addComponent(btnCancel)
 	    );
 
     layout.setHorizontalGroup(hGroup);
@@ -78,22 +74,20 @@ public class AddUserWindow extends JDialog implements ActionListener {
     // Create a sequential group for the vertical axis.
     GroupLayout.SequentialGroup vGroup = layout.createSequentialGroup();
  
-    // The sequential group contains two parallel groups that align
-    // the contents along the baseline. The first parallel group contains
-    // the first label and text field, and the second parallel group contains
-    // the second label and text field. By using a sequential group
-    // the labels and text fields are positioned vertically after one another.
     vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 	   .addComponent(lblNombre)
 	   .addComponent(txtNombre) );
     vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
            .addComponent(lblImagen)
 	   .addComponent(btnImagen) );
+    vGroup.addComponent(lblImagenPath);
     vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
            .addComponent(lblIP)
 	   .addComponent(txtIP) );
+    vGroup.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+           .addComponent(btnOK)
+	   .addComponent(btnCancel) );
     layout.setVerticalGroup(vGroup);
-
 
     //Uncomment one of the following lines to try a different
     //file selection mode.  The first allows just directories
@@ -109,23 +103,6 @@ public class AddUserWindow extends JDialog implements ActionListener {
     btnOK.addActionListener(this);
     btnImagen.addActionListener(this);
 
-    //pnlImagen.add(btnImagen);
-    //pnlImagen.add(lblImagenPath);
-
-
-    /*
-    add(new JLabel("Nombre: "));
-    add(txtNombre);
-
-    add(new JLabel("Imagen: "));
-    add(pnlImagen);
-
-    add(new JLabel("Dirección IP: "));
-    add(txtIP);
-
-    add(btnOK);
-    add(btnCancel);
-    */
 
     //Handle window closing correctly.
     /*
@@ -147,8 +124,8 @@ public class AddUserWindow extends JDialog implements ActionListener {
       int returnVal = fileChooser.showOpenDialog(this);
       if (returnVal == JFileChooser.APPROVE_OPTION ) {
          File fImg = fileChooser.getSelectedFile();
-	 lblImagenPath.setText(fImg.getPath() + "/" + fImg.getName());
-    	 this.revalidate();
+	 lblImagenPath.setText(fImg.getPath());
+    	 //this.revalidate();
 	 this.pack();
       }
 
