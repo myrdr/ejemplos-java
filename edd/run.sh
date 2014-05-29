@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PROGRAMA=edu.itszapopan.edd.programas.SimpleList
+PROGRAMA=edu.itszapopan.edd.programas.SimpleListSearch
 
 # Ejecutar el programa
 java $PROGRAMA
