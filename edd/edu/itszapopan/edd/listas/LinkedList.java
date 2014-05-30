@@ -115,6 +115,29 @@ public class LinkedList {
 
   }
 
+  /**
+   * Delete an element of the list
+   */
+  public void  delete(float number)  {
+    tmp = header;
+    Node toDelete;
+
+    if (tmp.getNext() != null) {
+      // There is at least one element
+      while (tmp.getNext() != null) {
+         if (tmp.getNext().getData() == number) {
+	   // Como dijo Abril: Que lo borre
+	   toDelete = tmp.getNext();
+	   tmp.setNext( toDelete.getNext()  );
+	   //tmp.setNext( tmp.getNext().getNext()  );
+	   toDelete = null; // This is like erase.
+	   break;
+         }
+         tmp = tmp.getNext();
+      }
+    }
+  }
+
 }
 
 

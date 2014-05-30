@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JOptionPane;
 
 public class AddUserWindow extends JDialog implements ActionListener {
 
@@ -65,7 +66,7 @@ public class AddUserWindow extends JDialog implements ActionListener {
             .addComponent(txtNombre)
             .addComponent(btnImagen)
             .addComponent(lblImagenPath)
-	    .addComponent(txtIP)
+	    .addComponent(txtIP, 64,128,130)
 	    .addComponent(btnCancel)
 	    );
 
@@ -103,7 +104,6 @@ public class AddUserWindow extends JDialog implements ActionListener {
     btnOK.addActionListener(this);
     btnImagen.addActionListener(this);
 
-
     //Handle window closing correctly.
     /*
     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -114,6 +114,7 @@ public class AddUserWindow extends JDialog implements ActionListener {
     */
 
     pack();
+    setResizable(false);
     setVisible(true);
 
   }
@@ -130,9 +131,14 @@ public class AddUserWindow extends JDialog implements ActionListener {
       }
 
     } else if (e.getSource() == btnOK) {
+      JOptionPane.showMessageDialog(frame,
+        "Eggs are not supposed to be green.",
+        "Inane error",
+        JOptionPane.ERROR_MESSAGE);
 
     } else { //if (e.getSource() == btnCancel) {
-
+      this.setVisible(false);
+      this.dispose();
     }
   }
 
