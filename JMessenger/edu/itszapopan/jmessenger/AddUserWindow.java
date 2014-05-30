@@ -16,8 +16,11 @@ public class AddUserWindow extends JDialog implements ActionListener {
   private JLabel     lblNombre, lblIP;
   private JFileChooser fileChooser;
 
-  public AddUserWindow (Frame owner) {
+  private VentanaPrincipal venPrin;
+
+  public AddUserWindow (VentanaPrincipal owner) {
     super(owner,"Agregar Usuarios", true);
+    venPrin = owner;
 
     FileNameExtensionFilter filter;
     GroupLayout layout;
@@ -114,6 +117,12 @@ public class AddUserWindow extends JDialog implements ActionListener {
     */
 
     pack();
+
+    // Poner al centro de la pantalla
+    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+    this.setLocation(dim.width/2-this.getSize().width/2,
+		     dim.height/2-this.getSize().height/2);
+
     setResizable(false);
     setVisible(true);
 
@@ -131,11 +140,25 @@ public class AddUserWindow extends JDialog implements ActionListener {
       }
 
     } else if (e.getSource() == btnOK) {
-      JOptionPane.showMessageDialog(frame,
-        "Eggs are not supposed to be green.",
-        "Inane error",
-        JOptionPane.ERROR_MESSAGE);
 
+       if (txtNombre.getText().length() == 0  ||
+               txtIP.getText().length() == 0 
+	    || lblImagenPath.getText().length() == 0
+	       )
+       {
+         JOptionPane.showMessageDialog(this,
+           "Error: Faltan datos por completar",
+           "Datos incompletos",
+           JOptionPane.ERROR_MESSAGE);
+       } else {
+	 // Agregamos el contacto
+	 venPrin.getPanelContactos().addContact(txtNombre.getText(),
+			 lblImagenPath.getText()
+			 );
+	 venPrin.revalidate();
+         this.setVisible(false);
+         this.dispose();
+       }
     } else { //if (e.getSource() == btnCancel) {
       this.setVisible(false);
       this.dispose();
