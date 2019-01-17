@@ -6,5 +6,5 @@ PROGRAMA=edu.itszapopan.edd.programas.SimpleListSearch
 java $PROGRAMA
 
 #Hacer el archivo Jar
-#jar cfe JMessenger.jar %PROGRAMA% img edu/itszapopan/jmessenger/*.class
+jar cfe JMessenger.jar %PROGRAMA% img edu/itszapopan/jmessenger/*.class
 
